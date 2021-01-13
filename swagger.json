@@ -23,6 +23,10 @@
       {
         "name": "Measurements",
         "description": "API for measurements in the factory"
+      },
+      {
+        "name": "Tests",
+        "description": "API for tests in the factory"
       }
     ],
     "schemes": [
@@ -286,6 +290,46 @@
             "type": "string"
           }],
           "summary": "Get an steer measurements by car id",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/tests/driving/{carID}": {
+        "get": {
+          "tags": [
+            "Tests"
+          ],
+          "parameters": [{ 
+            "name": "carID",
+            "in": "path",
+            "description": "ID of car",
+            "required": true,
+            "type": "string"
+          }],
+          "summary": "Get driving tests by car id",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/tests/liquid/{carID}": {
+        "get": {
+          "tags": [
+            "Tests"
+          ],
+          "parameters": [{ 
+            "name": "carID",
+            "in": "path",
+            "description": "ID of car",
+            "required": true,
+            "type": "string"
+          }],
+          "summary": "Get liquid tests by car id",
           "responses": {
             "200": {
               "description": "OK"

@@ -7,12 +7,13 @@ const {sql, config} = require('./database/sql');
 const employeeRouter = require('./roots/employee')
 const departmentRouter = require('./roots/department');
 const measurementRouter = require('./roots/measurements');
+const testRouter = require('./roots/tests');
 
 // use routers
 app.use('/employees', employeeRouter)
 app.use('/departments', departmentRouter)
 app.use('/measurements', measurementRouter)
-
+app.use('/tests', testRouter)
 
 const options = {
     definition: {
