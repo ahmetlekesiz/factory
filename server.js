@@ -4,15 +4,13 @@ var bodyParser = require('body-parser')
 var swaggerJsdoc = require("swagger-jsdoc")
 var swaggerUi = require("swagger-ui-express");
 var swaggerDocument = require('./swagger.json');
+const {sql, config} = require('./database/sql');
 const employeeRouter = require('./roots/employee')
-const {sql, config} = require('./database/sql')
-
+const departmentRouter = require('./roots/department');
 
 // use routers
-app.use('/employees',employeeRouter)
-
-// SQL 
-
+app.use('/employees', employeeRouter)
+app.use('/departments', departmentRouter)
 
 // create application/json parser
 var jsonParser = bodyParser.json()

@@ -13,8 +13,12 @@
     "basePath": "/",
     "tags": [
       {
-        "name": "Employee",
-        "description": "API for employee in the system"
+        "name": "Employees",
+        "description": "API for employees in the system"
+      },
+      {
+        "name": "Departments",
+        "description": "API for departments in the system"
       }
     ],
     "schemes": [
@@ -66,10 +70,49 @@
           }
         }
       },
+      "/departments": {
+        "get": {
+          "tags": [
+            "Departments"
+          ],
+          "summary": "Get all departments in system",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Departments"
+              }
+            }
+          }
+        }
+      },
+      "/departments/{departmentsID}": {
+        "get": {
+          "tags": [
+            "Departments"
+          ],
+          "parameters": [{ 
+            "name": "departmentsID",
+            "in": "path",
+            "description": "ID of departments",
+            "required": true,
+            "type": "string"
+          }],
+          "summary": "Get an department by employee id",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Department"
+              }
+            }
+          }
+        }
+      },
       "/addEmployee": {
         "post": {
           "tags": [
-            "Employee"
+            "Employeeaa"
           ],
           "description": "Create new employee in system",
           "parameters": [
@@ -125,9 +168,27 @@
           }
         }
       },
+      "Department": {
+        "required": [
+          "departmentName",
+          "numberOfEmployees"
+        ],
+        "properties": {
+          "departmentName": {
+            "type": "string"
+          },
+          "numberOfEmployees": {
+            "type": "string"
+          }
+        }
+      },
       "Employees": {
         "type": "array",
         "$ref": "#/definitions/Employee"
+      },
+      "Departments": {
+        "type": "array",
+        "$ref": "#/definitions/Department"
       }
     }
   }
