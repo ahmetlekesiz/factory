@@ -3,20 +3,16 @@ const {sql, config} = require('../database/sql')
 var bodyParser = require('body-parser')
 var jsonParser = bodyParser.json() // create application/json parser
 
-// Create Operation
-/*
-measurementRouter.post('/create', jsonParser, function (req, res) {
+measurementRouter.post('/rubbersilicone/create', jsonParser, function (req, res) {
 
-    var departmentID = parseInt(req.body.departmentID)
-    var firstName = req.body.firstName
-    var lastName = req.body.lastName
-    var email = req.body.email
-    var city = req.body.city
-    var birthdate = req.body.birthdate
+    var maxPressure = parseFloat(req.body.maxPressure)
+    var minPressure = parseFloat(req.body.minPressure)
+    var companyID = req.body.companyID
+    var m = new Date()
+    var dateString = m.getUTCFullYear() +"/"+ (m.getUTCMonth()+1) +"/"+ m.getUTCDate()
 
-    var insertQuery = ` INSERT INTO Employee (DepartmentID, FirstName, LastName, Email, City, Birthdate) 
-                        VALUES (${departmentID}, '${firstName}',  '${lastName}',  '${email}',  '${city}',  '${birthdate}')`
-
+    var insertQuery = ` INSERT INTO Rubber_Silicone_Measurement (MeasurementDate, MaxPressure, MinPressure, CompanyID) 
+                        VALUES ('${dateString}', ${maxPressure},  ${minPressure},  '${companyID}')`
     // connect to your database
     sql.connect(config, function (err) {
     
@@ -36,7 +32,7 @@ measurementRouter.post('/create', jsonParser, function (req, res) {
         });
     });
 });
-*/
+
 
 // Get Rubber Measurement by Car ID
 measurementRouter.get(`/rubbersilicone/:carID`, function (req, res) {

@@ -27,6 +27,10 @@
     {
       "name": "Tests",
       "description": "API for tests in the factory"
+    },
+    {
+      "name": "Cars",
+      "description": "API for cars in the factory"
     }
   ],
   "schemes": [
@@ -51,6 +55,19 @@
             "schema": {
               "$ref": "#/definitions/Employees"
             }
+          }
+        }
+      }
+    },
+    "/employees/departments": {
+      "get": {
+        "tags": [
+          "Employees"
+        ],
+        "summary": "Get all employees with their department info",
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -336,6 +353,46 @@
           }
         }
       }
+    },
+    "/cars": {
+      "get": {
+        "tags": [
+          "Cars"
+        ],
+        "summary": "Get all cars with their measurement id info",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/measurements/rubbersilicone/create": {
+      "post": {
+          "summary": "Create an rubbersilicone measurements",
+        "tags": [
+          "Measurements"
+        ],
+        "description": "Create an rubbersilicone measurements",
+        "parameters": [
+          {
+            "name": "rubbersilicone",
+            "in": "body",
+            "description": "Create an rubbersilicone measurements",
+            "schema": {
+              "$ref": "#/definitions/Rubbersilicone"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New rubbersilicone measurement is created"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -373,6 +430,19 @@
       ],
       "properties": {
         "departmentName": {
+          "type": "string"
+        }
+      }
+    },
+    "Rubbersilicone": {
+      "properties": {
+        "maxPressure": {
+          "type": "string"
+        },
+        "minPressure": {
+          "type": "string"
+        },
+        "companyID": {
           "type": "string"
         }
       }
