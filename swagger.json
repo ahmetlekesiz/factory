@@ -1,0 +1,133 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Factory Data Control Interface",
+      "description": "Tofaş Application API",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:5000",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "Employee",
+        "description": "API for employee in the system"
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/employees": {
+        "get": {
+          "tags": [
+            "Employees"
+          ],
+          "summary": "Get all employees in system",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Employees"
+              }
+            }
+          }
+        }
+      },
+      "/employees/{employeeID}": {
+        "get": {
+          "tags": [
+            "Employees"
+          ],
+          "parameters": [{ 
+            "name": "employeeID",
+            "in": "path",
+            "description": "ID of Employee",
+            "required": true,
+            "type": "string"
+          }],
+          "summary": "Get an employee by employee id",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Employee"
+              }
+            }
+          }
+        }
+      },
+      "/addEmployee": {
+        "post": {
+          "tags": [
+            "Employee"
+          ],
+          "description": "Create new employee in system",
+          "parameters": [
+            {
+              "name": "employee",
+              "in": "body",
+              "description": "Employee that we want to create",
+              "schema": {
+                "$ref": "#/definitions/Employee"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "New employee is created",
+              "schema": {
+                "$ref": "#/definitions/Employee"
+              }
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Employee": {
+        "required": [
+          "firstName",
+          "lastName",
+          "email",
+          "departmentID"
+        ],
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "departmentID": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "birthdate": {
+            "type": "string"
+          }
+        }
+      },
+      "Employees": {
+        "type": "array",
+        "$ref": "#/definitions/Employee"
+      }
+    }
+  }
