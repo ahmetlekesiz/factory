@@ -1,6 +1,5 @@
 var express = require('express');
 var app = express();
-var bodyParser = require('body-parser')
 var swaggerJsdoc = require("swagger-jsdoc")
 var swaggerUi = require("swagger-ui-express");
 var swaggerDocument = require('./swagger.json');
@@ -11,71 +10,6 @@ const departmentRouter = require('./roots/department');
 // use routers
 app.use('/employees', employeeRouter)
 app.use('/departments', departmentRouter)
-
-// create application/json parser
-var jsonParser = bodyParser.json()
- 
-// create application/x-www-form-urlencoded parser
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
-
-app.get('/', function (req, res) {
-
-    // connect to your database
-    sql.connect(config, function (err) {
-    
-        if (err) console.log(err);
-
-        // create Request object
-        var request = new sql.Request();
-           
-        var tableName = 'Course'
-        var valueList = []
-        valueList.add('CSE400')
-        // query to the database and get the records
-        request.query('INSERT INTO ' + tableName +' VALUES(\'CSE400\', \'Webden Insert\', 3)', function (err, recordset) {
-            
-            if (err) console.log(err)
-
-            // send records as a response
-            res.send(recordset);
-            
-        });
-    });
-});
-
-app.post('/addEmployee', jsonParser, function (req, res) {
-
-    var departmentID = parseInt(req.body.departmentID)
-    var firstName = req.body.firstName
-    var lastName = req.body.lastName
-    var email = req.body.email
-    var city = req.body.city
-    var birthdate = req.body.birthdate
-
-    var insertQuery = ` INSERT INTO Employee (DepartmentID, FirstName, LastName, Email, City, Birthdate) 
-                        VALUES (${departmentID}, '${firstName}',  '${lastName}',  '${email}',  '${city}',  '${birthdate}')`
-
-    console.log(insertQuery)
-
-    // connect to your database
-    sql.connect(config, function (err) {
-    
-        if (err) console.log(err);
-
-        // create Request object
-        var request = new sql.Request();
-
-        // query to the database and get the records
-        request.query(insertQuery, function (err, recordset) {
-            
-            if (err) console.log(err)
-
-            // send records as a response
-            res.send(recordset);
-            
-        });
-    });
-});
 
 const options = {
     definition: {
@@ -102,10 +36,9 @@ const options = {
       ],
     },
     apis: ["./routes/books.js"],
-  };
+};
   
-  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 var server = app.listen(5000, function () {
     console.log('Server is running..');

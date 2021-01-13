@@ -109,10 +109,11 @@
           }
         }
       },
-      "/addEmployee": {
+      "/employees/create": {
         "post": {
+            "summary": "Create an employee",
           "tags": [
-            "Employeeaa"
+            "Employees"
           ],
           "description": "Create new employee in system",
           "parameters": [
@@ -133,6 +134,36 @@
               "description": "New employee is created",
               "schema": {
                 "$ref": "#/definitions/Employee"
+              }
+            }
+          }
+        }
+      },
+      "/departments/create": {
+        "post": {
+            "summary": "Create an department",
+          "tags": [
+            "Departments"
+          ],
+          "description": "Create new department in system",
+          "parameters": [
+            {
+              "name": "department",
+              "in": "body",
+              "description": "Department that we want to create",
+              "schema": {
+                "$ref": "#/definitions/Department"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "New department is created",
+              "schema": {
+                "$ref": "#/definitions/Department"
               }
             }
           }
@@ -170,14 +201,10 @@
       },
       "Department": {
         "required": [
-          "departmentName",
-          "numberOfEmployees"
+          "departmentName"
         ],
         "properties": {
           "departmentName": {
-            "type": "string"
-          },
-          "numberOfEmployees": {
             "type": "string"
           }
         }
