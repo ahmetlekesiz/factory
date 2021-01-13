@@ -1,389 +1,389 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-      "version": "1.0.0",
-      "description": "Factory Data Control Application Interface",
-      "title": "Tofaş API",
-      "license": {
-        "name": "MIT",
-        "url": "https://opensource.org/licenses/MIT"
-      }
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Tofaş API",
+    "description": "Factory Data Control Application Interface",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:5000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Employees",
+      "description": "API for employees in the system"
     },
-    "host": "localhost:5000",
-    "basePath": "/",
-    "tags": [
-      {
-        "name": "Employees",
-        "description": "API for employees in the system"
-      },
-      {
-        "name": "Departments",
-        "description": "API for departments in the system"
-      },
-      {
-        "name": "Measurements",
-        "description": "API for measurements in the factory"
-      },
-      {
-        "name": "Tests",
-        "description": "API for tests in the factory"
-      }
-    ],
-    "schemes": [
-      "http"
-    ],
-    "consumes": [
-      "application/json"
-    ],
-    "produces": [
-      "application/json"
-    ],
-    "paths": {
-      "/employees": {
-        "get": {
-          "tags": [
-            "Employees"
-          ],
-          "summary": "Get all employees in system",
-          "responses": {
-            "200": {
-              "description": "OK",
-              "schema": {
-                "$ref": "#/definitions/Employees"
-              }
-            }
-          }
-        }
-      },
-      "/employees/{employeeID}": {
-        "get": {
-          "tags": [
-            "Employees"
-          ],
-          "parameters": [{ 
-            "name": "employeeID",
-            "in": "path",
-            "description": "ID of Employee",
-            "required": true,
-            "type": "string"
-          }],
-          "summary": "Get an employee by employee id",
-          "responses": {
-            "200": {
-              "description": "OK",
-              "schema": {
-                "$ref": "#/definitions/Employee"
-              }
-            }
-          }
-        }
-      },
-      "/departments": {
-        "get": {
-          "tags": [
-            "Departments"
-          ],
-          "summary": "Get all departments in system",
-          "responses": {
-            "200": {
-              "description": "OK",
-              "schema": {
-                "$ref": "#/definitions/Departments"
-              }
-            }
-          }
-        }
-      },
-      "/departments/{departmentsID}": {
-        "get": {
-          "tags": [
-            "Departments"
-          ],
-          "parameters": [{ 
-            "name": "departmentsID",
-            "in": "path",
-            "description": "ID of departments",
-            "required": true,
-            "type": "string"
-          }],
-          "summary": "Get an department by employee id",
-          "responses": {
-            "200": {
-              "description": "OK",
-              "schema": {
-                "$ref": "#/definitions/Department"
-              }
-            }
-          }
-        }
-      },
-      "/employees/create": {
-        "post": {
-            "summary": "Create an employee",
-          "tags": [
-            "Employees"
-          ],
-          "description": "Create new employee in system",
-          "parameters": [
-            {
-              "name": "employee",
-              "in": "body",
-              "description": "Employee that we want to create",
-              "schema": {
-                "$ref": "#/definitions/Employee"
-              }
-            }
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-              "description": "New employee is created",
-              "schema": {
-                "$ref": "#/definitions/Employee"
-              }
-            }
-          }
-        }
-      },
-      "/departments/create": {
-        "post": {
-            "summary": "Create an department",
-          "tags": [
-            "Departments"
-          ],
-          "description": "Create new department in system",
-          "parameters": [
-            {
-              "name": "department",
-              "in": "body",
-              "description": "Department that we want to create",
-              "schema": {
-                "$ref": "#/definitions/Department"
-              }
-            }
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-              "description": "New department is created",
-              "schema": {
-                "$ref": "#/definitions/Department"
-              }
-            }
-          }
-        }
-      },
-      "/measurements/montage/{carID}": {
-        "get": {
-          "tags": [
-            "Measurements"
-          ],
-          "parameters": [{ 
-            "name": "carID",
-            "in": "path",
-            "description": "ID of car",
-            "required": true,
-            "type": "string"
-          }],
-          "summary": "Get an montage measurements by car id",
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        }
-      },
-      "/measurements/rubbersilicone/{carID}": {
-        "get": {
-          "tags": [
-            "Measurements"
-          ],
-          "parameters": [{ 
-            "name": "carID",
-            "in": "path",
-            "description": "ID of car",
-            "required": true,
-            "type": "string"
-          }],
-          "summary": "Get an rubber silicone measurements by car id",
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        }
-      },
-      "/measurements/doorlock/{carID}": {
-        "get": {
-          "tags": [
-            "Measurements"
-          ],
-          "parameters": [{ 
-            "name": "carID",
-            "in": "path",
-            "description": "ID of car",
-            "required": true,
-            "type": "string"
-          }],
-          "summary": "Get an rubber door lock by car id",
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        }
-      },
-      "/measurements/geometricbody/{carID}": {
-        "get": {
-          "tags": [
-            "Measurements"
-          ],
-          "parameters": [{ 
-            "name": "carID",
-            "in": "path",
-            "description": "ID of car",
-            "required": true,
-            "type": "string"
-          }],
-          "summary": "Get an rubber geometric body by car id",
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        }
-      },
-      "/measurements/carello/{carID}": {
-        "get": {
-          "tags": [
-            "Measurements"
-          ],
-          "parameters": [{ 
-            "name": "carID",
-            "in": "path",
-            "description": "ID of car",
-            "required": true,
-            "type": "string"
-          }],
-          "summary": "Get an carello measurements by car id",
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        }
-      },
-      "/measurements/steer/{carID}": {
-        "get": {
-          "tags": [
-            "Measurements"
-          ],
-          "parameters": [{ 
-            "name": "carID",
-            "in": "path",
-            "description": "ID of car",
-            "required": true,
-            "type": "string"
-          }],
-          "summary": "Get an steer measurements by car id",
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        }
-      },
-      "/tests/driving/{carID}": {
-        "get": {
-          "tags": [
-            "Tests"
-          ],
-          "parameters": [{ 
-            "name": "carID",
-            "in": "path",
-            "description": "ID of car",
-            "required": true,
-            "type": "string"
-          }],
-          "summary": "Get driving tests by car id",
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        }
-      },
-      "/tests/liquid/{carID}": {
-        "get": {
-          "tags": [
-            "Tests"
-          ],
-          "parameters": [{ 
-            "name": "carID",
-            "in": "path",
-            "description": "ID of car",
-            "required": true,
-            "type": "string"
-          }],
-          "summary": "Get liquid tests by car id",
-          "responses": {
-            "200": {
-              "description": "OK"
+    {
+      "name": "Departments",
+      "description": "API for departments in the system"
+    },
+    {
+      "name": "Measurements",
+      "description": "API for measurements in the factory"
+    },
+    {
+      "name": "Tests",
+      "description": "API for tests in the factory"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/employees": {
+      "get": {
+        "tags": [
+          "Employees"
+        ],
+        "summary": "Get all employees in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Employees"
             }
           }
         }
       }
     },
-    "definitions": {
-      "Employee": {
-        "required": [
-          "firstName",
-          "lastName",
-          "email",
-          "departmentID"
+    "/employees/{employeeID}": {
+      "get": {
+        "tags": [
+          "Employees"
         ],
-        "properties": {
-          "firstName": {
-            "type": "string"
-          },
-          "lastName": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string"
-          },
-          "departmentID": {
-            "type": "string"
-          },
-          "city": {
-            "type": "string"
-          },
-          "birthdate": {
-            "type": "string"
+        "parameters": [{ 
+          "name": "employeeID",
+          "in": "path",
+          "description": "ID of Employee",
+          "required": true,
+          "type": "string"
+        }],
+        "summary": "Get an employee by employee id",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
           }
         }
-      },
-      "Department": {
-        "required": [
-          "departmentName"
+      }
+    },
+    "/departments": {
+      "get": {
+        "tags": [
+          "Departments"
         ],
-        "properties": {
-          "departmentName": {
-            "type": "string"
+        "summary": "Get all departments in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Departments"
+            }
           }
         }
-      },
-      "Employees": {
-        "type": "array",
-        "$ref": "#/definitions/Employee"
-      },
-      "Departments": {
-        "type": "array",
-        "$ref": "#/definitions/Department"
+      }
+    },
+    "/departments/{departmentsID}": {
+      "get": {
+        "tags": [
+          "Departments"
+        ],
+        "parameters": [{ 
+          "name": "departmentsID",
+          "in": "path",
+          "description": "ID of departments",
+          "required": true,
+          "type": "string"
+        }],
+        "summary": "Get an department by employee id",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Department"
+            }
+          }
+        }
+      }
+    },
+    "/employees/create": {
+      "post": {
+          "summary": "Create an employee",
+        "tags": [
+          "Employees"
+        ],
+        "description": "Create new employee in system",
+        "parameters": [
+          {
+            "name": "employee",
+            "in": "body",
+            "description": "Employee that we want to create",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New employee is created",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          }
+        }
+      }
+    },
+    "/departments/create": {
+      "post": {
+          "summary": "Create an department",
+        "tags": [
+          "Departments"
+        ],
+        "description": "Create new department in system",
+        "parameters": [
+          {
+            "name": "department",
+            "in": "body",
+            "description": "Department that we want to create",
+            "schema": {
+              "$ref": "#/definitions/Department"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New department is created",
+            "schema": {
+              "$ref": "#/definitions/Department"
+            }
+          }
+        }
+      }
+    },
+    "/measurements/montage/{carID}": {
+      "get": {
+        "tags": [
+          "Measurements"
+        ],
+        "parameters": [{ 
+          "name": "carID",
+          "in": "path",
+          "description": "ID of car",
+          "required": true,
+          "type": "string"
+        }],
+        "summary": "Get an montage measurements by car id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/measurements/rubbersilicone/{carID}": {
+      "get": {
+        "tags": [
+          "Measurements"
+        ],
+        "parameters": [{ 
+          "name": "carID",
+          "in": "path",
+          "description": "ID of car",
+          "required": true,
+          "type": "string"
+        }],
+        "summary": "Get an rubber silicone measurements by car id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/measurements/doorlock/{carID}": {
+      "get": {
+        "tags": [
+          "Measurements"
+        ],
+        "parameters": [{ 
+          "name": "carID",
+          "in": "path",
+          "description": "ID of car",
+          "required": true,
+          "type": "string"
+        }],
+        "summary": "Get an rubber door lock by car id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/measurements/geometricbody/{carID}": {
+      "get": {
+        "tags": [
+          "Measurements"
+        ],
+        "parameters": [{ 
+          "name": "carID",
+          "in": "path",
+          "description": "ID of car",
+          "required": true,
+          "type": "string"
+        }],
+        "summary": "Get an rubber geometric body by car id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/measurements/carello/{carID}": {
+      "get": {
+        "tags": [
+          "Measurements"
+        ],
+        "parameters": [{ 
+          "name": "carID",
+          "in": "path",
+          "description": "ID of car",
+          "required": true,
+          "type": "string"
+        }],
+        "summary": "Get an carello measurements by car id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/measurements/steer/{carID}": {
+      "get": {
+        "tags": [
+          "Measurements"
+        ],
+        "parameters": [{ 
+          "name": "carID",
+          "in": "path",
+          "description": "ID of car",
+          "required": true,
+          "type": "string"
+        }],
+        "summary": "Get an steer measurements by car id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/tests/driving/{carID}": {
+      "get": {
+        "tags": [
+          "Tests"
+        ],
+        "parameters": [{ 
+          "name": "carID",
+          "in": "path",
+          "description": "ID of car",
+          "required": true,
+          "type": "string"
+        }],
+        "summary": "Get driving tests by car id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/tests/liquid/{carID}": {
+      "get": {
+        "tags": [
+          "Tests"
+        ],
+        "parameters": [{ 
+          "name": "carID",
+          "in": "path",
+          "description": "ID of car",
+          "required": true,
+          "type": "string"
+        }],
+        "summary": "Get liquid tests by car id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     }
+  },
+  "definitions": {
+    "Employee": {
+      "required": [
+        "firstName",
+        "lastName",
+        "email",
+        "departmentID"
+      ],
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "departmentID": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "birthdate": {
+          "type": "string"
+        }
+      }
+    },
+    "Department": {
+      "required": [
+        "departmentName"
+      ],
+      "properties": {
+        "departmentName": {
+          "type": "string"
+        }
+      }
+    },
+    "Employees": {
+      "type": "array",
+      "$ref": "#/definitions/Employee"
+    },
+    "Departments": {
+      "type": "array",
+      "$ref": "#/definitions/Department"
+    }
   }
+}
