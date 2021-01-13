@@ -23,4 +23,35 @@ carRouter.get('/', function (req, res) {
     });
   });
 
+// Create Operation
+carRouter.post('/create', jsonParser, function (req, res) {
+
+    var model = req.body.model
+    var color = req.body.color
+    var m = new Date()
+    var dateString = m.getUTCFullYear() +"/"+ (m.getUTCMonth()+1) +"/"+ m.getUTCDate()
+
+    var insertQuery = ` INSERT INTO Car (ManufacturingDate, Model, Color, ControlID) 
+                        VALUES ('${dateString}', '${model}',  '${color}',  NULL)`
+
+    // connect to your database
+    sql.connect(config, function (err) {
+    
+        if (err) console.log(err);
+
+        // create Request object
+        var request = new sql.Request();
+
+        // query to the database and get the records
+        request.query(insertQuery, function (err, recordset) {
+            
+            if (err) console.log(err)
+
+            // send records as a response
+            res.send(recordset);
+            
+        });
+    });
+});
+
   module.exports = carRouter

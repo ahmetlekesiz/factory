@@ -393,6 +393,60 @@
           }
         }
       }
+    },
+    "/tests/liquid/create": {
+      "post": {
+          "summary": "Create an liquid test",
+        "tags": [
+          "Tests"
+        ],
+        "description": "Create an liquid test",
+        "parameters": [
+          {
+            "name": "liquid",
+            "in": "body",
+            "description": "Create an liquid test",
+            "schema": {
+              "$ref": "#/definitions/Liquid"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New liquid test is created"
+          }
+        }
+      }
+    },
+    "/cars/create": {
+      "post": {
+          "summary": "Create a car",
+        "tags": [
+          "Cars"
+        ],
+        "description": "Create a car",
+        "parameters": [
+          {
+            "name": "liquid",
+            "in": "body",
+            "description": "Create a car",
+            "schema": {
+              "$ref": "#/definitions/Car"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New car is created"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -443,6 +497,32 @@
           "type": "string"
         },
         "companyID": {
+          "type": "string"
+        }
+      }
+    },
+    "Liquid": {
+      "properties": {
+        "WaterTest": {
+          "type": "integer"
+        },
+        "OilTest": {
+          "type": "integer"
+        },
+        "FuelTest": {
+          "type": "integer"
+        },
+        "TestEmployee": {
+          "type": "integer"
+        }
+      }
+    },
+    "Car": {
+      "properties": {
+        "model": {
+          "type": "string"
+        },
+        "color": {
           "type": "string"
         }
       }
