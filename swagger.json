@@ -192,6 +192,106 @@
             }
           }
         }
+      },
+      "/measurements/rubbersilicone/{carID}": {
+        "get": {
+          "tags": [
+            "Measurements"
+          ],
+          "parameters": [{ 
+            "name": "carID",
+            "in": "path",
+            "description": "ID of car",
+            "required": true,
+            "type": "string"
+          }],
+          "summary": "Get an rubber silicone measurements by car id",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/measurements/doorlock/{carID}": {
+        "get": {
+          "tags": [
+            "Measurements"
+          ],
+          "parameters": [{ 
+            "name": "carID",
+            "in": "path",
+            "description": "ID of car",
+            "required": true,
+            "type": "string"
+          }],
+          "summary": "Get an rubber door lock by car id",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/measurements/geometricbody/{carID}": {
+        "get": {
+          "tags": [
+            "Measurements"
+          ],
+          "parameters": [{ 
+            "name": "carID",
+            "in": "path",
+            "description": "ID of car",
+            "required": true,
+            "type": "string"
+          }],
+          "summary": "Get an rubber geometric body by car id",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/measurements/carello/{carID}": {
+        "get": {
+          "tags": [
+            "Measurements"
+          ],
+          "parameters": [{ 
+            "name": "carID",
+            "in": "path",
+            "description": "ID of car",
+            "required": true,
+            "type": "string"
+          }],
+          "summary": "Get an carello measurements by car id",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/measurements/steer/{carID}": {
+        "get": {
+          "tags": [
+            "Measurements"
+          ],
+          "parameters": [{ 
+            "name": "carID",
+            "in": "path",
+            "description": "ID of car",
+            "required": true,
+            "type": "string"
+          }],
+          "summary": "Get an steer measurements by car id",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
       }
     },
     "definitions": {
