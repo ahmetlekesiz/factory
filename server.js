@@ -6,10 +6,13 @@ var swaggerDocument = require('./swagger.json');
 const {sql, config} = require('./database/sql');
 const employeeRouter = require('./roots/employee')
 const departmentRouter = require('./roots/department');
+const measurementRouter = require('./roots/measurements');
 
 // use routers
 app.use('/employees', employeeRouter)
 app.use('/departments', departmentRouter)
+app.use('/measurements', measurementRouter)
+
 
 const options = {
     definition: {
